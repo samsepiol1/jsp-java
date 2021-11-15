@@ -5,57 +5,54 @@
  */
 package controller;
 
-import dao.KullaniciFacade;
-import entity.Kullanici;
+import dao.UserFacade;
+import entity.User;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-/**
- *
- * @author anurd
- */
-@Named("kullaniciCont")
-@ViewScoped
-public class KullaniciController implements Serializable {
 
-    private Kullanici kullanici;
+@Named("userCont")
+@ViewScoped
+public class UserController implements Serializable {
+
+    private User user;
     @EJB
-    private KullaniciFacade kf;
+    private UserFacade us;
 
     public void create() {
-        this.kf.create(kullanici);
-        this.kullanici = new Kullanici();
+        this.us.create(User);
+        this.user = new User();
     }
 
-    public List<Kullanici> getRead() {
-        return this.kf.findAll();
+    public List<User> getRead() {
+        return this.us.findAll();
     }
 
-    public void updateForm(Kullanici k) {
-        this.kullanici = k;
+    public void updateForm(User k) {
+        this.User = k;
     }
 
     public void update() {
-        this.kf.edit(kullanici);
-        this.kullanici = new Kullanici();
+        this.us.edit(User);
+        this.User = new User();
     }
 
-    public void delete(Kullanici k) {
-        this.kf.remove(k);
+    public void delete(User k) {
+        this.us.remove(k);
     }
 
-    public Kullanici getKullanici() {
-        if (this.kullanici == null) {
-            return this.kullanici = new Kullanici();
+    public User getUser() {
+        if (this.User == null) {
+            return this.User = new User();
         }
-        return kullanici;
+        return User;
     }
 
-    public void setKullanici(Kullanici kullanici) {
-        this.kullanici = kullanici;
+    public void setUser(User User) {
+        this.user = User;
     }
 
 }
